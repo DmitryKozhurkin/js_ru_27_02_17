@@ -17,6 +17,7 @@ class CommentList extends Component {
         let commentComponents, switcherText
 
         if (isOpen) {
+            //comments может быть undefined
             commentComponents = comments.map(comment => <Comment key={comment.id} comment={comment} />)
             switcherText = 'Скрыть комменты'
         } else {
