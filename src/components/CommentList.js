@@ -13,6 +13,7 @@ class CommentList extends Component {
 
     componentDidMount() {
         console.log('---', 'comment list mounted')
+        this.size = this.container.getBoundingClientRect()
     }
 
     componentDidUpdate() {
@@ -32,9 +33,6 @@ class CommentList extends Component {
 
     getContainerRef = (ref) => {
         this.container = ref
-        if (ref) {
-            this.size = ref.getBoundingClientRect()
-        }
     }
 
     getBody() {

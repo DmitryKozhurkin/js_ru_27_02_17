@@ -1,8 +1,11 @@
 import React, {Component, PropTypes} from 'react'
 import CommentList from './CommentList'
+import toggleOpen from '../decorators/toggleOpen'
+
 
 function Article(props) {
     const {article, isOpen, toggleOpen} = props
+    console.log('Article', article.id);
     const body = isOpen
         ? <section>
             {article.text}
@@ -25,4 +28,4 @@ Article.propTypes = {
     }).isRequired
 }
 
-export default Article
+export default toggleOpen(Article);
