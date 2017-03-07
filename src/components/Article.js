@@ -9,7 +9,7 @@ function Article(props) {
     const body = isOpen
         ? <section>
             {article.text}
-            <CommentList comments={article.comments}/>
+            <CommentList comments={article.comments} isOpen={false}/>
         </section>
         : null
     return (
@@ -25,7 +25,9 @@ Article.propTypes = {
         title: PropTypes.string.isRequired,
         text: PropTypes.string,
         comments: PropTypes.array
-    }).isRequired
+    }).isRequired,
+    isOpen: PropTypes.bool,
+    toggleOpen: PropTypes.func.isRequired,
 }
 
-export default toggleOpen(Article);
+export default Article;

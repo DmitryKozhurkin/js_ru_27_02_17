@@ -3,7 +3,7 @@ import React from 'react'
 
 export default (CustomComponent) => class DecoratedComponent extends React.Component {
     state = {
-        isOpen: false
+        isOpen: !! this.props.isOpen
     }
 
     toggleOpen = ev => {
@@ -14,6 +14,6 @@ export default (CustomComponent) => class DecoratedComponent extends React.Compo
     }
 
     render() {
-        return <CustomComponent toggleOpen={this.toggleOpen} {...this.state}  {...this.props} />
+        return <CustomComponent {...this.props} {...this.state} toggleOpen={this.toggleOpen} />
     }
 }
