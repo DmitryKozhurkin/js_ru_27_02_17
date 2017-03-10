@@ -13,16 +13,16 @@ class CommentList extends Component {
 
     componentDidMount() {
         console.log('---', 'comment list mounted')
-        this.size = this.container.getBoundingClientRect()
+        this.setSize()
     }
 
     componentDidUpdate() {
-        this.size = this.container.getBoundingClientRect()
+        console.log('---', 'comment list updated')
+        this.setSize()
     }
 
     render() {
         const {isOpen, toggleOpen} = this.props
-        console.log('---', this.size)
         return (
             <div ref={this.getContainerRef}>
                 <a href="#" onClick={toggleOpen}>{isOpen ? 'hide' : 'show'} comments</a>
@@ -55,6 +55,11 @@ class CommentList extends Component {
                 </ul>
             </div>
         )
+    }
+
+    setSize() {
+        this.size = this.container.getBoundingClientRect()
+        console.log('---', this.size)
     }
 }
 

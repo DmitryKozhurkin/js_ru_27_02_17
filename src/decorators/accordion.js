@@ -1,20 +1,18 @@
 //HOC === Decorator
 import React, {Component} from 'react'
 
-//DecoratedComponent я называл чтоб легче понять было. Лучше выбирай более значущее название
-export default (CustomComponent) => class DecoratedComponent extends Component {
+export default (CustomComponent) => class AccordeonComponent extends Component {
     state = {
-        //Не привязывайся к названиям сущностей, вся суть декораторов в универсальности. Сделай openItemId
-        openArticleId: null
+        openItemId: this.props.openItemId
     }
 
-    toggleOpenArticle = openArticleId => ev => {
+    toggleOpenItem = openItemId => ev => {
         this.setState({
-            openArticleId
+            openItemId: openItemId === this.state.openItemId ? null : openItemId
         })
     }
 
     render() {
-        return <CustomComponent {...this.props} {...this.state} toggleOpenArticle={this.toggleOpenArticle} />
+        return <CustomComponent {...this.props} {...this.state} toggleOpenItem={this.toggleOpenItem} />
     }
 }

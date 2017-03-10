@@ -3,12 +3,12 @@ import Article from './Article'
 import accordion from '../decorators/accordion'
 
 function ArticleList(props) {
-    const {articles, openArticleId, toggleOpenArticle} = props
+    const {articles, openItemId, toggleOpenItem} = props
 
     const articleComponents = articles.map(article => <li key={article.id}>
         <Article article={article}
-                 isOpen={article.id === openArticleId}
-                 toggleOpen={toggleOpenArticle(article.id)}
+                 isOpen={article.id === openItemId}
+                 toggleOpen={toggleOpenItem(article.id)}
         />
     </li>)
 
@@ -20,8 +20,8 @@ function ArticleList(props) {
 }
 
 ArticleList.propTypes = {
-    //вот сюда еще и из декоратора данные приходят
-    articles: PropTypes.array.isRequired
+    articles: PropTypes.array.isRequired,
+    openItemId: PropTypes.string
 }
 
 export default accordion(ArticleList);
