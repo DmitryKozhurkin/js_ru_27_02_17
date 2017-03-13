@@ -23,6 +23,7 @@ class CommentForm extends Component {
         if (name === 'user' && value.length > 10) return
         if (name === 'text' && value.length > 150) return
         this.setState({
+            //...this.state - лишнее
             ...this.state,
             [name] : value
         })
