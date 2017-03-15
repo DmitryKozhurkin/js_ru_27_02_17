@@ -30,14 +30,20 @@ class ArticleList extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    console.log('---', 'connect, state = ', state)
-    return {
-        articles: state.articles
-    }
-}
-
-export default connect(mapStateToProps)(accrdion(ArticleList))
+export default connect(state => {
+    const articles = state.articles.filter(article => {
+        const { from, to } = state.filters.dateRange
+        const articlesSelect = state.filters.articlesSelect
+        if (from && new Date(article.date) < from || to && new Date(article.date) > to) {
+            return false
+        }
+        if (articlesSelect.length && articlesSelect.indexOf(article.id) === -1) {
+            return false
+        }
+        return true
+    })
+    return { articles }
+})(accrdion(ArticleList))
 
 ArticleList.propTypes = {
     articles: PropTypes.array.isRequired,
