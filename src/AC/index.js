@@ -16,10 +16,10 @@ export function deleteArticle(id) {
     }
 }
 
-export function changeDateRange(day) {
+export function changeDateRange(range) {
     return {
         type: CHANGE_DATE_RANGE_FILTER,
-        payload: { day }
+        payload: { range }
     }
 }
 

@@ -6,7 +6,8 @@ import {changeDateRange} from '../../AC/index'
 
 class DateRange extends Component {
     handleDayClick = (day) => {
-        this.props.changeDateRange(day)
+        const range = DateUtils.addDayToRange(day, this.props.range)
+        this.props.changeDateRange(range)
     }
 
     render() {
